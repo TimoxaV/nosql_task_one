@@ -1,7 +1,7 @@
 // queries/part2_queries.js
 use("spotify");
 
-print("Task 1: Party Tracks");
+print("Task 1: Party tracks");
 printjson(
   db.tracks.find(
     {
@@ -21,7 +21,7 @@ printjson(
   ).toArray()
 );
 
-print("Task 2: Artists Where All Tracks Are Popular");
+print("Task 2: Artists where all tracks are popular");
 printjson(
   db.tracks.aggregate([
     { $unwind: "$artists" },
@@ -53,7 +53,7 @@ printjson(
   ]).toArray()
 );
 
-print("Task 3: Unusual Tracks (Tempo Outliers per Genre)");
+print("Task 3: Unusual tracks (tempo outliers per genre)");
 printjson(
   db.tracks.aggregate([
     {
@@ -109,7 +109,7 @@ printjson(
   ]).toArray()
 );
 
-print("Task 4: Background Work Tracks");
+print("Task 4: Background work tracks");
 printjson(
   db.tracks.find(
     {
