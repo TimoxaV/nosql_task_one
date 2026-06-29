@@ -1,4 +1,3 @@
-// queries/part2_queries.js
 use("spotify");
 
 print("Task 1: Party tracks");

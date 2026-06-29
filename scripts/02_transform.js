@@ -1,12 +1,11 @@
-// scripts/02_transform.js
-// Run: mongosh "YOUR_MONGO_URI" --file scripts/02_transform.js
+// Run: mongosh "MONGO_URI" --file scripts/02_transform.js
 
 use("spotify");
 
 db.tracks.drop();
 
 db.tracks_raw.aggregate([
-  // Stage 1: keep only needed fields, rename artists --> artists_raw
+  // Stage 1: keep only needed fields, rename artists
   {
     $project: {
       _id: 0,
@@ -36,7 +35,6 @@ db.tracks_raw.aggregate([
   // Stage 2: reshape into document-oriented schema
   {
     $addFields: {
-      // Split "Artist A;Artist B" --> ["Artist A", "Artist B"] with whitespace trimmed
       artists: {
         $map: {
           input: { $split: ["$artists_raw", ";"] },
